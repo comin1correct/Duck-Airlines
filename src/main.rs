@@ -1,9 +1,72 @@
 #![allow(unused_variables)]
 
 fn main() {
+    _haversine_formula()
+}
+
+fn _match(){
+    // let word = "Dog";
+    // if word == "Duck"{
+    //     println!("Quack");
+    // } else if word == "Dog" {
+    //     println!("Bark");
+    // }
+    // else {
+    //     println!("all quiet out here");
+    // }
+
+    let animal = "Dog";
+    match animal {
+        "Duck" => println!("Quack"),
+        "Dog" => println!("Bark"),
+        _ => println!("All quite out here")
+    };
+
+}
+
+fn _option(){
+    // no null data type
+    // option is an enumeration that has two values: Some & None
+    let phrase = String::from("Duck Airlines");
+    let letter = phrase.chars().nth(15);
+
+    let value = match letter{
+        Some(character) => character.to_string(),
+        None => String::from("No value")
+    };
+
+    println!("{}", value);
+}
+
+fn _enum(){
+    enum NavigationAids{
+        NDB,
+        VOR ,
+        VORDME,
+        //FIX {name: String, latitude: f32, longitude: f32}
+    }
+
+    println!("NDB:\t{}", NavigationAids::NDB as u8);
+    println!("VOR:\t{}", NavigationAids::VOR as u8);
+    println!("VORDME:\t{}", NavigationAids::VORDME as u8);
+}
+
+fn _control_flow(){
+    let word = "Dog";
+    if word == "Duck"{
+        println!("Quack");
+    } else if word == "Dog" {
+        println!("Bark");
+    }
+    else {
+        println!("all quiet out here");
+    }
+}
+
+fn _haversine_formula(){
     const EARTH_RADIUS_IN_KILOMETERS: f64 = 6371.0;
 
-    // Haversine formula. starting and ending point of lat/long
+    // Haversine formula. starting and ending point of lat/long + radius and trig calc
 
     // cleveland
     let kcle_lat_degrees: f64 = 41.4075;
@@ -30,9 +93,11 @@ fn main() {
     let central_angle = 2.0 * inner_central_angle.sqrt().asin();
 
     let distance = EARTH_RADIUS_IN_KILOMETERS * central_angle;
+    let miles = distance * 0.6214;
 
-    println!("The distance between the two points is {:.1} kilometers", distance)
+    println!("The distance between the two points is {:.1} kilometer and {:.1} miles", distance, miles)
 }
+
 
 fn _operators(){
     // calculating exponents
